@@ -1,3 +1,3 @@
-## Challager Car Next to Me
+## Challege Car Next to Me
 
 ### Project made with Laravel and vue
