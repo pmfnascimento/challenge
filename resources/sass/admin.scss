@@ -1,0 +1,15 @@
+// Import Custom Variables
+@import "variables.scss";
+
+// Import Bootstrap
+@import '~startbootstrap-sb-admin/src/scss/styles';
+
+body {
+    -moz-transform: scale(0.8, 0.8); /* Moz-browsers */
+    zoom: 0.8; /* Other non-webkit browsers */
+    zoom: 80%; /* Webkit browsers */
+    }
+
+.sb-sidenav{
+    box-shadow: 0.25rem -0 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
