@@ -40,7 +40,8 @@ class Manager extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function driver(){
+    public function driver()
+    {
         return $this->hasMany(Driver::class);
     }
 }

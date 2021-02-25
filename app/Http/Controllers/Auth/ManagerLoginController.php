@@ -85,8 +85,8 @@ class ManagerLoginController extends Controller
     {
 
         $rules = [
-            'email'    => 'required|email|exists:admins|min:5|max:191',
-            'password' => 'required|string|min:4|max:255',
+            'email'    => 'required|email|exists:managers|min:5|max:191',
+            'password' => 'required|string',
         ];
 
         //custom validation error messages.
@@ -108,7 +108,6 @@ class ManagerLoginController extends Controller
         //Login failed...
         return redirect()
             ->back()
-            ->withInput()
             ->with('error', 'Login failed, please try again!');
     }
 }

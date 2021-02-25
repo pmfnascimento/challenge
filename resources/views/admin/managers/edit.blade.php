@@ -12,38 +12,46 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="{{ route('admin.managers.update', ['manager' => $manager->id]) }}" method="post"
+                        class="form-horizontal">
                         @csrf
                         @method('PUT')
-
 
                         <div class="form-group row">
                             <label for="name" class="col-2 col-form-label">Name</label>
                             <div class="col-8">
-                                <input id="name" name="name" placeholder="Insert Name" type="text" class="form-control"
-                                    required="required" aria-describedby="nameHelpBlock" value="{{ $manager->name }}">
-                                <span id="nameHelpBlock" class="form-text text-muted">Insert the name of manage</span>
+                                <input id="name" name="name" placeholder="Insert the name of manage" type="text"
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    aria-describedby="nameHelpBlock" value="{{ $manager->name }}">
+                                @error('name')
+                                    <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-2 col-form-label">Email</label>
                             <div class="col-8">
-                                <input id="email" name="email" type="email" class="form-control" required="required"
-                                    aria-describedby="emailHelpBlock" value="{{ $manager->email }}">
-                                <span id="emailHelpBlock" class="form-text text-muted">Insert the email of manager</span>
+                                <input id="email" name="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    value="{{ $manager->email }}" placeholder="Insert the email of manager">
+                                @error('email')
+                                    <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
+
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="password" class="col-2 col-form-label">Password</label>
                             <div class="col-8">
                                 <input id="password" name="password" type="password" class="form-control"
-                                    required="required" aria-describedby="passwordHelpBlock">
+                                    aria-describedby="passwordHelpBlock">
                                 <span id="passwordHelpBlock" class="form-text text-muted">Insert the password or left black
                                     for no re-definition</span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="offset-2 col-8">
+                                <a href="{{ route('admin.managers.index') }}" class="btn btn-danger btn-sm">Cancelar</a>
                                 <button name="submit" type="submit" class="btn btn-success btn-sm">Submit</button>
                             </div>
                         </div>

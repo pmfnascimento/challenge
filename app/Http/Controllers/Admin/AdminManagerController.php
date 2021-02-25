@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Manager;
 use App\Models\Driver;
@@ -26,8 +28,7 @@ class AdminManagerController extends Controller
      */
     public function index()
     {
-        $managers = Manager::all();
-
+        $managers = Manager::orderBy('name', 'DESC')->withCount('driver')->get();
         return view('admin.managers.index', ['managers' => $managers]);
     }
 
@@ -38,7 +39,8 @@ class AdminManagerController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.managers.create');
     }
 
     /**
@@ -49,7 +51,20 @@ class AdminManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required', 'max:255',
+            'email' => 'required|email',
+            'password' => 'min:6'
+
+        ]);
+
+        $manager = new Manager();
+        $manager->name = $request->name;
+        $manager->email = $request->email;
+        $manager->password = Hash::make($request->password);
+        $manager->save();
+        Toastr::success('Manager Successfully Created');
+        return redirect()->route('admin.managers.index');
     }
 
     /**
@@ -60,13 +75,6 @@ class AdminManagerController extends Controller
      */
     public function show($id)
     {
-        $manager = Manager::findOrFail($id);
-
-        $drivers = Driver::orderBy('name', 'DESC')->with('manager')->with('location')->where('manager_id', $id)->get();
-
-        $driversAll = Driver::all()->whereNotIn('id', $id);
-
-        return view('admin.managers.show', ['manager' => $manager, 'drivers' => $drivers, 'driversAll' => $driversAll]);
     }
 
     /**
@@ -77,7 +85,13 @@ class AdminManagerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $manager = Manager::findOrFail($id);
+
+        $drivers = Driver::orderBy('name', 'DESC')->with('manager')->with('location')->where('manager_id', $id)->get();
+
+        $driversAll = Driver::all()->whereNotIn('id', $id);
+
+        return view('admin.managers.edit', ['manager' => $manager, 'drivers' => $drivers, 'driversAll' => $driversAll]);
     }
 
     /**
@@ -89,7 +103,24 @@ class AdminManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $manager = Manager::find($id);
+
+        $request->validate([
+            'name' => 'required', 'max:255',
+            'email' => 'required|email',
+            'password' => 'min:6'
+        ]);
+        if (!is_null($manager)) {
+            $manager->name = $request->name;
+            $manager->email = $request->email;
+            $manager->password = Hash::make($request->password);
+            $manager->save();
+            Toastr::success('Manager Successfully Saved');
+            return redirect()->route('admin.managers.index');
+        } else {
+            Toastr::dnager('This manager dosen t exists');
+            return redirect()->route('admin.managers.show', ['manager' => $id]);
+        }
     }
 
     /**
