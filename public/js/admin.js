@@ -115,10 +115,6 @@
   });
 })(jQuery);
 
-$(document).ready(function () {
-  $('.dataTable').DataTable();
-});
-
 /***/ }),
 
 /***/ 1:

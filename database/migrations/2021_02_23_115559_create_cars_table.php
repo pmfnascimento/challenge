@@ -18,8 +18,8 @@ class CreateCarsTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('plate_number');
-            $table->unsignedBigInteger('locations_id');
-            $table->foreign('locations_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->unsignedBigInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->timestamps();
         });
     }

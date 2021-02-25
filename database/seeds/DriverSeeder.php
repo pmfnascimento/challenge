@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DriverSeeder extends Seeder
 {
@@ -18,7 +19,8 @@ class DriverSeeder extends Seeder
             'email' => 'driver@challenge.com',
             'password' => Hash::make('password'),
             'location_id' => 1,
-            'manager_id' => 1
+            'manager_id' => 1,
+            'created_at' => Carbon::now()->toDateTimeString()
         ]);
     }
 }

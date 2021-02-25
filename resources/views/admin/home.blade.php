@@ -1,4 +1,8 @@
 @extends('layouts.admin')
+@section('styles')
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+@endsection
 @section('content')
     <h1 class="mt-4">Home</h1>
     <hr>
@@ -31,12 +35,13 @@
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Last Managers</strong></div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th class="text-center">Name</th>
                                     <th class="text-center">Email</th>
                                     <th class="text-center">nº Drives</th>
+                                    <th class="text-center">Created At</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -48,6 +53,8 @@
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td class="text-center">{{ $item->email }}</td>
                                         <td class="text-center">{{ $item->driver_count }}</td>
+                                        <td class="text-center">{{ $item->created_at->diffForHumans() }}
+                                        </td>
                                         <td class="text-center">
                                             <a class="btn btn-success btn-sm"
                                                 href="{{ route('admin.managers.index') }}">Show
@@ -70,7 +77,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th class="text-center">Name</th>
@@ -101,4 +108,15 @@
         </div>
 
 
+    @endsection
+
+    @section('scripts')
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                $('.dataTable').DataTable();
+            });
+
+        </script>
     @endsection

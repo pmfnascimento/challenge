@@ -17,16 +17,15 @@ class CreateDriversTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->unsignedBigInteger('locations_id');
-            $table->foreign('locations_id')->references('id')->on('locations')->onDelete('cascade');
-            $table->unsignedBigInteger('managers_id');
-            $table->foreign('managers_id')->references('id')->on('managers')->onDelete('cascade');
+            $table->unsignedBigInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations');
+            $table->unsignedBigInteger('manager_id');
+            $table->foreign('manager_id')->references('id')->on('managers');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
-
     }
 
     /**

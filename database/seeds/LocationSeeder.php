@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 class LocationSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class LocationSeeder extends Seeder
         DB::table('locations')->insert([
             'longitude' => $faker->latitude($min = -90, $max = 90),
             'latitude' => $faker->longitude($min = -180, $max = 180),
+            'created_at' => Carbon::now()->toDateTimeString()
         ]);
     }
 }

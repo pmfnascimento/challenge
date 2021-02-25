@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Manager;
+use App\Models\Driver;
 use App\Http\Controllers\Controller;
 
 class AdminDriverController extends Controller
@@ -15,6 +17,8 @@ class AdminDriverController extends Controller
     public function index()
     {
         //
+        $drivers = Driver::with('manager')->get();
+        return view('admin.drivers.index', ['drivers' => $drivers]);
     }
 
     /**
@@ -25,6 +29,7 @@ class AdminDriverController extends Controller
     public function create()
     {
         //
+        return view('admin.drivers.create');
     }
 
     /**
@@ -47,6 +52,9 @@ class AdminDriverController extends Controller
     public function show($id)
     {
         //
+        $driver = Driver::orderBy('name', 'DESC')->with('location')->where('driver_id', $id)->get();
+        $managers = Manager::all();
+        return view('admin.managers.edit', ['driver' => $driver, 'managers' => $managers]);
     }
 
     /**
@@ -58,6 +66,8 @@ class AdminDriverController extends Controller
     public function edit($id)
     {
         //
+        $driver = Driver::findOrFail($id);
+        return view('admin.drivers.edit', ['driver' => $driver]);
     }
 
     /**

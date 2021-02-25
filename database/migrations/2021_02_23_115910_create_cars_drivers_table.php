@@ -15,10 +15,10 @@ class CreateCarsDriversTable extends Migration
     {
         Schema::create('cars_drivers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cars_id')->nullable();
-            $table->foreign('cars_id')->references('id')->on('cars')->onDelete('cascade');
-            $table->unsignedBigInteger('drivers_id')->nullable();
-            $table->foreign('drivers_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->unsignedBigInteger('car_id');
+            $table->foreign('car_id')->references('id')->on('cars');
+            $table->unsignedBigInteger('driver_id')->nullable();
+            $table->foreign('driver_id')->references('id')->on('drivers');
             $table->timestamps();
         });
     }

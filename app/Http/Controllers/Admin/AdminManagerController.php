@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Yoeunes\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Manager;
 use App\Models\Driver;
 use App\Http\Controllers\Controller;
@@ -103,24 +104,23 @@ class AdminManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $manager = Manager::find($id);
+        $manager = Manager::findOrFail($id);
 
         $request->validate([
             'name' => 'required', 'max:255',
             'email' => 'required|email',
-            'password' => 'min:6'
         ]);
-        if (!is_null($manager)) {
-            $manager->name = $request->name;
-            $manager->email = $request->email;
+
+
+        $manager->name = $request->name;
+        $manager->email = $request->email;
+        if ($request->password != '') {
             $manager->password = Hash::make($request->password);
-            $manager->save();
-            Toastr::success('Manager Successfully Saved');
-            return redirect()->route('admin.managers.index');
-        } else {
-            Toastr::dnager('This manager dosen t exists');
-            return redirect()->route('admin.managers.show', ['manager' => $id]);
         }
+
+        $manager->save();
+        Toastr::success('Manager Successfully Saved');
+        return redirect()->route('admin.managers.index');
     }
 
     /**
@@ -131,6 +131,8 @@ class AdminManagerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $manager = Manager::findOrFail($id);
+        $manager->delete();
+        return redirect()->route('admin.managers.index');
     }
 }
