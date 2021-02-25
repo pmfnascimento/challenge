@@ -107,7 +107,7 @@ class AdminManagerController extends Controller
         $manager = Manager::findOrFail($id);
 
         $request->validate([
-            'name' => 'required', 'max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email',
         ]);
 
@@ -119,7 +119,7 @@ class AdminManagerController extends Controller
         }
 
         $manager->save();
-        Toastr::success('Manager Successfully Saved');
+        Toastr::success('Manager Successfully Updated');
         return redirect()->route('admin.managers.index');
     }
 

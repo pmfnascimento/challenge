@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Manager;
 use App\Models\Location;
+use App\Models\CarDriver;
 
 class Driver extends Authenticatable
 {
@@ -18,7 +19,7 @@ class Driver extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'manager_id', 'location_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -44,5 +45,10 @@ class Driver extends Authenticatable
     public function location()
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function driverCar()
+    {
+        return $this->belongsToMany(CarDriver::class);
     }
 }

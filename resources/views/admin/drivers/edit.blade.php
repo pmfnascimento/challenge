@@ -77,6 +77,25 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="password" class="col-4 col-form-label">Manager</label>
+                            <div class="col-8">
+                                <select id="manager" class="form-control" name="manager"
+                                    aria-describedby="managerHelpBlock">
+                                    @foreach ($managers as $manager)
+                                        @if ($manager->id == $driver->manager_id)
+                                            <option value="{{ $manager->id }}" selected>{{ $manager->name }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $manager->id }}" selected>{{ $manager->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+
+                                </select>
+                                <span id="managerHelpBlock" class="form-text text-muted">Choose the manager</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="offset-4 col-8">
                                 <a href="{{ route('admin.drivers.index') }}" class="btn btn-danger btn-sm">Cancelar</a>
                                 <button name="submit" type="submit" class="btn btn-success btn-sm">Save</button>
@@ -104,7 +123,7 @@
 
     <script>
         $(document).ready(function() {
-            var map = L.map('map').setView([41.5538, -7.8387], 8);
+            var map = L.map('map').setView([41.5538, -7.8387], 9);
             var marker;
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -125,9 +144,7 @@
                 $('#longitude').val(marker.getLatLng().lng);
             });
 
-            var group = new L.featureGroup([marker]);
 
-            map.fitBounds(group.getBounds());
 
         });
 
