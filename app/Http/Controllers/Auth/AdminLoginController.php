@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -10,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class AdminLoginController extends Controller
 {
-  
+
     use AuthenticatesUsers;
     /**
      * Where to redirect users after login.
@@ -95,7 +96,7 @@ class AdminLoginController extends Controller
         ];
 
         //validate the request.
-        $request->validate($rules,$messages);
+        $request->validate($rules, $messages);
     }
 
     /**
@@ -107,8 +108,8 @@ class AdminLoginController extends Controller
     {
         //Login failed...
         return redirect()
-        ->back()
-        ->withInput()
-        ->with('error', 'Login failed, please try again!');
+            ->back()
+            ->withInput()
+            ->with('error', 'Login failed, please try again!');
     }
 }

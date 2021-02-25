@@ -19,27 +19,21 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        switch ($guard) {
-            case 'admin':
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('admin.home');
-                }
-                break;
-            case 'manager':
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('managers.home');
-                }
-                break;
-            case 'driver':
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('drivers.home');
-                }
-                break;
-            default:
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('home');
-                }
-                break;
+        if (Auth::guard($guard)->check()) {
+
+            if ($guard == "admin") {
+                //user was authenticated with admin guard.
+                return redirect()->route('admin.home');
+            } else  if ($guard == "manager") {
+                //user was authenticated with admin guard.
+                return redirect()->route('managers.home');
+            } else  if ($guard == "driver") {
+                //user was authenticated with admin guard.
+                return redirect()->route('drivers.home');
+            } else {
+                //default guard.
+                return redirect()->route('home');
+            }
         }
         return $next($request);
     }

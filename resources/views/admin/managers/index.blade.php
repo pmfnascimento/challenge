@@ -3,7 +3,7 @@
     <h1 class="mt-4">Managers</h1>
     <hr>
     <ol class="breadcrumb mb-4 p-2">
-        <li class="breadcrumb-item active">Managers/</li>
+        <li class="breadcrumb-item active">Managers / List</li>
     </ol>
     <div class="row justify-content-center">
         <div class="col-10">

@@ -31,14 +31,14 @@ class AdminController extends Controller
         $managers = Manager::all()->count();
         $drivers = Driver::all()->count();
 
-        $lastManagers = Manager::orderBy('id','DESC')->withCount('driver')->take(5)->get();
-        $lastDrivers = Driver::orderBy('id', 'DESC')->take(5)->get();
+        $lastManagers = Manager::orderBy('name', 'ASC')->withCount('driver')->take(5)->get();
+        $lastDrivers = Driver::orderBy('name', 'ASC')->take(5)->get();
         return view('admin.home', [
-           'users' => $users, 
-           'managers' => $managers, 
-           'drivers' => $drivers,
-           'lastManagers' => $lastManagers,
-           'lastDrivers' => $lastDrivers
+            'users' => $users,
+            'managers' => $managers,
+            'drivers' => $drivers,
+            'lastManagers' => $lastManagers,
+            'lastDrivers' => $lastDrivers
         ]);
     }
 
@@ -52,5 +52,4 @@ class AdminController extends Controller
         Auth::logout();
         return redirect('/');
     }
-
 }
