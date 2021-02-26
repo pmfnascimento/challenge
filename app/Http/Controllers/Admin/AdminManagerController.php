@@ -76,6 +76,10 @@ class AdminManagerController extends Controller
      */
     public function show($id)
     {
+        $projectExists = Manager::where('id', $id)->exists();
+        if (!$projectExists) {
+            abort(404);
+        }
     }
 
     /**

@@ -2,11 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+
+use App\Models\Location;
 use App\Http\Controllers\Controller;
 
 class AdminLocationController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth:admin', 'preventBackHistory']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +27,13 @@ class AdminLocationController extends Controller
      */
     public function index()
     {
-        return view('admin.locations.index');
+
+        $locations = DB::table('locations')->select('*', 'locations.id as id', 'drivers.location_id as driver_location', 'cars.location_id as car_location', 'locations.created_at as location_created_at')
+            ->leftJoin('drivers', 'locations.id', '=', 'drivers.location_id')
+            ->leftJoin('cars', 'locations.id', '=', 'cars.location_id')
+            ->get();
+
+        return view('admin.locations.index', ['locations' => $locations]);
     }
 
     /**
@@ -25,6 +44,7 @@ class AdminLocationController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -36,41 +56,9 @@ class AdminLocationController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -81,5 +69,8 @@ class AdminLocationController extends Controller
     public function destroy($id)
     {
         //
+        $location = Location::findOrFail($id);
+        $location->delete();
+        return redirect()->route('admin.locations.index');
     }
 }

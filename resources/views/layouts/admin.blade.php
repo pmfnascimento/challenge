@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -52,12 +51,16 @@
                             Managers
                         </a>
                         <a class="nav-link collapsed" href="{{ route('admin.drivers.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="far fa-user-circle"></i></div>
                             Drivers
                         </a>
                         <a class="nav-link collapsed" href="{{ route('admin.locations.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
                             Locations
+                        </a>
+                        <a class="nav-link collapsed" href="{{ route('admin.cars.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
+                            Cars
                         </a>
                         <a class="nav-link collapsed" href="{{ route('admin.users.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class AdminUserController extends Controller
@@ -36,6 +37,7 @@ class AdminUserController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -47,6 +49,10 @@ class AdminUserController extends Controller
     public function show($id)
     {
         //
+        $projectExists = User::where('id', $id)->exists();
+        if (!$projectExists) {
+            abort(404);
+        }
     }
 
     /**

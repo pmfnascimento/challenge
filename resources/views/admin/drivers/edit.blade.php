@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         #map {
-            height: 350px;
+            height: 400px;
             width: 100%;
-            z-index: 10002;
+            z-index: 1001;
         }
 
     </style>
@@ -20,7 +20,7 @@
     </ol>
 
     <div class="row justify-content-center">
-        <div class="col-5">
+        <div class="col-6">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Edit Account Driver</strong>
                 </div>
@@ -60,11 +60,17 @@
                                 <input id="latitude" name="latitude" type="text" placeholder="Latitude"
                                     class="form-control @error('latitude') is-invalid @enderror"
                                     value="{{ $driver->location->latitude }}">
+                                @error('latitude')
+                                    <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="col-4">
                                 <input id="longitude" name="longitude" type="text" placeholder="Longitude"
                                     class="form-control @error('longitude') is-invalid @enderror"
                                     value="{{ $driver->location->longitude }}">
+                                @error('longitude')
+                                    <span class="form-text text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -96,22 +102,63 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="offset-4 col-8">
-                                <a href="{{ route('admin.drivers.index') }}" class="btn btn-danger btn-sm">Cancelar</a>
-                                <button name="submit" type="submit" class="btn btn-success btn-sm">Save</button>
+                            <div class="offset-4 col-4">
+                                <a href="{{ route('admin.drivers.index') }}"
+                                    class="btn btn-danger btn-block">Cancelar</a>
+                            </div>
+                            <div class="col-4">
+                                <button name="submit" type="submit" class="btn btn-success btn-block">Save</button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Define Location Map
                         Driver</strong>
                 </div>
                 <div id="map" class="card-body">
 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-11">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="far fa-arrow-alt-circle-up"></i> <strong>Last Cars</strong>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Band</th>
+                                    <th class="text-center">Model</th>
+                                    <th class="text-center">Actual Location</th>
+                                    <th class="text-center">Driver</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($cars as $car)
+                                    <tr>
+                                        <td class="text-center">{{ $car->brand }}</td>
+                                        <td class="text-center">{{ $car->model }}</td>
+                                        <td class="text-center">{{ $car->location->latitude }} |
+                                            {{ $car->location->latitude }}</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-success btn-sm" href="{{ route('admin.cars.index') }}">Show
+                                                +</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

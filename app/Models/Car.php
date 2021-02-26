@@ -3,14 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CarDriver;
+use App\Models\Location;
+use App\Models\Driver;
 
 class Car extends Model
 {
-    protected $table = 'car';
+    protected $table = 'cars';
 
-    public function carsDriver()
+    public function driver()
     {
-        return $this->belongsToMany(CarDriver::class);
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 }

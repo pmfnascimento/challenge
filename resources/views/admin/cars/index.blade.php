@@ -4,49 +4,46 @@
         crossorigin="anonymous" />
 @endsection
 @section('content')
-    <h1 class="mt-4">Locations</h1>
+    <h1 class="mt-4">Cars</h1>
     <hr>
     <ol class="breadcrumb mb-4 p-2">
-        <li class="breadcrumb-item active">Locations / List</li>
+        <li class="breadcrumb-item active">Cars / List</li>
     </ol>
 
     <div class="row justify-content-center">
         <div class="col-10">
             <div class="card mb-4">
-                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Last Locations</strong></div>
+                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Cars</strong>
+                    <a href="{{ route('admin.cars.create') }}" class="btn btn-success float-right">Create Car +</a>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th class="text-center">id</th>
-                                    <th class="text-center">Longitude</th>
-                                    <th class="text-center">Latitude</th>
+                                    <th class="text-center">Brand</th>
+                                    <th class="text-center">Model</th>
+                                    <th class="text-center">Plate Number</th>
+                                    <th class="text-center">Driver</th>
+                                    <th class="text-center">Actual Position</th>
                                     <th class="text-center">Created At</th>
-                                    <th class="text-center">From</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($locations as $item)
+                                @foreach ($cars as $item)
                                     <tr>
-                                        <td class="text-center">{{ $item->id }}</td>
-                                        <td class="text-center">{{ $item->longitude }}</td>
-                                        <td class="text-center">{{ $item->latitude }}</td>
-                                        <td class="text-center">{{ $item->location_created_at }}
+                                        <td class="text-center">{{ $item->brand }}</td>
+                                        <td class="text-center">{{ $item->model }}</td>
+                                        <td class="text-center">{{ $item->plate_number }}</td>
+                                        <td class="text-center">{{ $item->driver->name }}</td>
+                                        <td class="text-center">
+                                            {{ $item->location->latitude }} | {{ $item->location->longitude }}
                                         </td>
-                                        @if ($item->driver_location != null)
-                                            <td class="text-center">
-                                                Driver
-                                            </td>
-                                        @elseif ($item->car_location != null)
-                                            <td class="text-center">
-                                                Car
-                                            </td>
-                                        @endif
+                                        <td class="text-center">{{ $item->created_at->diffForHumans() }}
+                                        </td>
                                         <td class="justify-content-center d-flex">
-                                            <form method="POST"
-                                                action="{{ route('admin.locations.destroy', ['location' => $item->id]) }}">
+                                            <form method="POST" action="{{ route('admin.cars.destroy', [$item->id]) }}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete -</button>

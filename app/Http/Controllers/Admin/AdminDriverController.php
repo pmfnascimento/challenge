@@ -8,10 +8,23 @@ use Illuminate\Http\Request;
 use App\Models\Manager;
 use App\Models\Location;
 use App\Models\Driver;
+use App\Models\Car;
 use App\Http\Controllers\Controller;
 
 class AdminDriverController extends Controller
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth:admin', 'preventBackHistory']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,58 +44,97 @@ class AdminDriverController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.drivers.create');
+        //´
+        $managers = Manager::all();
+        return view('admin.drivers.create', ['managers' => $managers]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
+        $driver = new Driver();
+        $location = new Location();
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required|string',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'manager' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ]);
+
+        $location = $driver->location()->create([
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        $driver->name = $request->name;
+        $driver->email = $request->email;
+        $driver->location_id = $location->id;
+        $driver->manager_id = $request->manager;
+        if ($request->password != '') {
+            $driver->password = Hash::make($request->password);
+        }
+
+        $driver->save();
+        Toastr::success('Driver Successfully Updated');
+        return redirect()->route('admin.drivers.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        $driver = Driver::orderBy('name', 'DESC')->with('location')->where('driver_id', $id)->get();
-        $managers = Manager::all();
-        return view('admin.managers.edit', ['driver' => $driver, 'managers' => $managers]);
+        $projectExists = Driver::where('id', $id)->exists();
+        if (!$projectExists) {
+            abort(404);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $driver = Driver::findOrFail($id);
+        $projectExists = Driver::where('id', $id)->exists();
+        if (!$projectExists) {
+            abort(404);
+        }
+
+        $driver = Driver::find($id);
         $managers = Manager::all();
-        return view('admin.drivers.edit', ['driver' => $driver, 'managers' => $managers]);
+        $cars = Car::where('driver_id', $id);
+        return view('admin.drivers.edit', ['cars' => $cars, 'driver' => $driver, 'managers' => $managers]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+
         //
         $driver = Driver::findOrFail($id);
         $location = new Location();
@@ -93,18 +145,18 @@ class AdminDriverController extends Controller
             'longitude' => 'required',
             'manager' => 'required',
             'latitude' => 'required',
-            'longitude' => 'required'
+            'longitude' => 'required',
         ]);
 
         $location = $driver->location()->create([
             'latitude' => $request->latitude,
-            'longitude' => $request->longitude
+            'longitude' => $request->longitude,
         ]);
-
 
         $driver->name = $request->name;
         $driver->email = $request->email;
         $driver->location_id = $location->id;
+        $driver->manager_id = $request->manager;
         if ($request->password != '') {
             $driver->password = Hash::make($request->password);
         }
@@ -117,11 +169,14 @@ class AdminDriverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+        $driver = Driver::findOrFail($id);
+        $driver->delete();
+        return redirect()->route('admin.drivers.index');
     }
 }

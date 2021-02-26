@@ -20,6 +20,8 @@ class CreateCarsTable extends Migration
             $table->string('plate_number');
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations');
+            $table->unsignedBigInteger('driver_id');
+            $table->foreign('driver_id')->references('id')->on('drivers');
             $table->timestamps();
         });
     }

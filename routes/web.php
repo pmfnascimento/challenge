@@ -11,6 +11,7 @@ use Admin\AdminUserController;
 use Admin\AdminManagerController;
 use Admin\AdminLocationController;
 use Admin\AdminDriverController;
+use Admin\AdminCarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,12 @@ Route::prefix('admin')->group(function () {
     Route::resource('/locations', AdminLocationController::class, [
         'as' => 'admin'
     ]);
+    Route::resource('/cars', AdminCarController::class, [
+        'as' => 'admin'
+    ]);
 });
+
+
 
 Route::prefix('managers')->group(function () {
     Route::get('/login', [ManagerLoginController::class, 'showLoginForm'])->name('managers.login');

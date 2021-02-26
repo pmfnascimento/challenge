@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Driver;
+use App\Models\Car;
 
 class Location extends Model
 {
@@ -17,6 +18,11 @@ class Location extends Model
 
     public function driver()
     {
-        return $this->HasMany(Driver::class);
+        return $this->hasMany(Driver::class);
+    }
+
+    public function car()
+    {
+        return $this->hasMany(Car::class);
     }
 }

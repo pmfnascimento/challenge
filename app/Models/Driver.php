@@ -46,9 +46,4 @@ class Driver extends Authenticatable
     {
         return $this->belongsTo(Location::class);
     }
-
-    public function driverCar()
-    {
-        return $this->belongsToMany(CarDriver::class);
-    }
 }

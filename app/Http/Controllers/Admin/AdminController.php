@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Manager;
 use App\Models\Driver;
+use App\Models\Car;
 use App\Models\Admin;
 use App\Http\Controllers\Controller;
 
@@ -30,15 +31,19 @@ class AdminController extends Controller
         $users = Admin::all()->count();
         $managers = Manager::all()->count();
         $drivers = Driver::all()->count();
+        $cars = Car::all()->count();
 
         $lastManagers = Manager::orderBy('name', 'ASC')->withCount('driver')->take(5)->get();
         $lastDrivers = Driver::orderBy('name', 'ASC')->take(5)->get();
+        $lastCars = Car::orderBy('brand', 'ASC')->take(5)->get();
         return view('admin.home', [
             'users' => $users,
             'managers' => $managers,
             'drivers' => $drivers,
             'lastManagers' => $lastManagers,
-            'lastDrivers' => $lastDrivers
+            'lastDrivers' => $lastDrivers,
+            'lastCars' => $lastCars,
+            'cars' => $cars
         ]);
     }
 

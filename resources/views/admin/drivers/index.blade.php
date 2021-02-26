@@ -4,7 +4,7 @@
         crossorigin="anonymous" />
 @endsection
 @section('content')
-    <h1 class="mt-4">Managers</h1>
+    <h1 class="mt-4">Drivers</h1>
     <hr>
     <ol class="breadcrumb mb-4 p-2">
         <li class="breadcrumb-item active">Drivers / List</li>
