@@ -4,49 +4,45 @@
         crossorigin="anonymous" />
 @endsection
 @section('content')
-    <h1 class="mt-4">Drivers</h1>
+    <h1 class="mt-4">Cars</h1>
     <hr>
     <ol class="breadcrumb mb-4 p-2">
-        <li class="breadcrumb-item active">Drivers / List</li>
+        <li class="breadcrumb-item active">Cars / List</li>
     </ol>
 
     <div class="row justify-content-center">
         <div class="col-10">
             <div class="card mb-4">
-                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Last Drivers</strong> <a
-                        class="btn btn-success float-right" href="{{ route('admin.drivers.create') }}">Create
-                        +</a></div>
+                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Cars</strong>
+                    <a href="{{ route('admin.cars.create') }}" class="btn btn-success float-right">Create Car +</a>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Manager</th>
-                                    <th class="text-center">Nº Cars</th>
+                                    <th class="text-center">Brand</th>
+                                    <th class="text-center">Model</th>
+                                    <th class="text-center">Plate Number</th>
+                                    <th class="text-center">Driver</th>
+                                    <th class="text-center">Actual Position</th>
                                     <th class="text-center">Created At</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($drivers as $item)
+                                @foreach ($cars as $item)
                                     <tr>
                                         <td class="text-center">{{ $item->name }}</td>
                                         <td class="text-center">{{ $item->email }}</td>
-                                        <td class="text-center">{{ $item->manager->name }}</td>
-                                        <td class="text-center">{{ $item->car_count }}</td>
                                         <td class="text-center">{{ $item->created_at->diffForHumans() }}
                                         </td>
                                         <td class="justify-content-center d-flex">
-                                            <a class="btn btn-secondary mr-2"
-                                                href="{{ route('admin.drivers.edit', ['driver' => $item->id]) }}">Edit
-                                                +</a>
-                                            <form method="POST"
-                                                action="{{ route('admin.drivers.destroy', [$item->id]) }}">
+                                            <a href="{{ route('admin.users.edit') }}" class="btn btn-secondary"></a>
+                                            <form method="POST" action="{{ route('admin.users.destroy', [$item->id]) }}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger">Delete -</button>
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete -</button>
                                             </form>
                                         </td>
                                     </tr>

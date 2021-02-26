@@ -33,7 +33,7 @@ class AdminDriverController extends Controller
     public function index()
     {
         //
-        $drivers = Driver::with('manager')->get();
+        $drivers = Driver::with('manager')->withCount('car')->get();
         return view('admin.drivers.index', ['drivers' => $drivers]);
     }
 
@@ -121,7 +121,8 @@ class AdminDriverController extends Controller
 
         $driver = Driver::find($id);
         $managers = Manager::all();
-        $cars = Car::where('driver_id', $id);
+        $cars = Car::where('driver_id', $id)->with('location')->get();
+
         return view('admin.drivers.edit', ['cars' => $cars, 'driver' => $driver, 'managers' => $managers]);
     }
 
@@ -148,14 +149,13 @@ class AdminDriverController extends Controller
             'longitude' => 'required',
         ]);
 
-        $location = $driver->location()->create([
+        $driver->location()->update([
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
         ]);
 
         $driver->name = $request->name;
         $driver->email = $request->email;
-        $driver->location_id = $location->id;
         $driver->manager_id = $request->manager;
         if ($request->password != '') {
             $driver->password = Hash::make($request->password);

@@ -63,17 +63,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-3 col-form-label">Home Location</label>
+                            <label for="password" class="col-3 col-form-label">Actual Location</label>
                             <div class="col-4">
                                 <input id="latitude" name="latitude" type="text" placeholder="Latitude"
-                                    class="form-control @error('latitude') is-invalid @enderror">
+                                    class="form-control @error('latitude') is-invalid @enderror"
+                                    value="{{ old('latitude') }}">
                                 @error('latitude')
                                     <span class="form-text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="col-4">
                                 <input id="longitude" name="longitude" type="text" placeholder="Longitude"
-                                    class="form-control @error('longitude') is-invalid @enderror">
+                                    class="form-control @error('longitude') is-invalid @enderror"
+                                    value="{{ old('longitude') }}">
                                 @error('longitude')
                                     <span class="form-text text-danger">{{ $message }}</span>
                                 @enderror
@@ -81,7 +83,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-3 col-form-label">Manager</label>
+                            <label for="password" class="col-3 col-form-label">Drivers</label>
                             <div class="col-8">
                                 <select id="driver" class="form-control @error('driver') is-invalid @enderror"
                                     name="driver">
@@ -112,7 +114,7 @@
         </div>
         <div class="col-6">
             <div class="card mb-4">
-                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Define Home Location Map
+                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Define Actual Location Map
                         of Car</strong>
                 </div>
                 <div id="map" class="card-body">

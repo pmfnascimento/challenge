@@ -15,7 +15,7 @@
         <div class="col-10">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Last Managers</strong> <a
-                        class="btn btn-success btn-sm float-right" href="{{ route('admin.managers.create') }}">Create
+                        class="btn btn-success float-right" href="{{ route('admin.managers.create') }}">Create
                         +</a></div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -38,14 +38,14 @@
                                         <td class="text-center">{{ $item->created_at->diffForHumans() }}
                                         </td>
                                         <td class="justify-content-center d-flex">
-                                            <a class="btn btn-primary btn-sm mr-2"
+                                            <a class="btn btn-secondary mr-2"
                                                 href="{{ route('admin.managers.edit', ['manager' => $item->id]) }}">Edit
                                                 +</a>
                                             <form method="POST"
                                                 action="{{ route('admin.managers.destroy', [$item->id]) }}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete -</button>
+                                                <button type="submit" class="btn btn-danger">Delete -</button>
                                             </form>
                                         </td>
                                     </tr>

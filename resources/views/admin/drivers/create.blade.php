@@ -20,7 +20,7 @@
     </ol>
 
     <div class="row justify-content-center">
-        <div class="col-5">
+        <div class="col-6">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Create Account Driver</strong>
                 </div>
@@ -29,8 +29,8 @@
                     <form action="{{ route('admin.drivers.store') }}" method="post" class="form-horizontal">
                         @csrf
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">Name</label>
-                            <div class="col-8">
+                            <label for="name" class="col-2 col-form-label">Name</label>
+                            <div class="col-10">
                                 <input id="name" name="name" placeholder="Insert the name of driver" type="text"
                                     class="form-control @error('name') is-invalid @enderror"
                                     aria-describedby="nameHelpBlock" value="{{ old('name') }}">
@@ -40,8 +40,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-4 col-form-label">Email</label>
-                            <div class="col-8">
+                            <label for="email" class="col-2 col-form-label">Email</label>
+                            <div class="col-10">
                                 <input id="email" name="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror"
                                     placeholder="Insert the email of driver" value="{{ old('email') }}">
@@ -52,8 +52,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Home Location</label>
-                            <div class="col-4">
+                            <label for="password" class="col-2 col-form-label">Home</label>
+                            <div class="col-5">
                                 <input id="latitude" name="latitude" type="text" placeholder="Latitude"
                                     class="form-control @error('latitude') is-invalid @enderror"
                                     value="{{ old('latitude') }}">
@@ -61,7 +61,7 @@
                                     <span class="form-text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-5">
                                 <input id="longitude" name="longitude" type="text" placeholder="Longitude"
                                     class="form-control @error('longitude') is-invalid @enderror"
                                     value="{{ old('longitude') }}">
@@ -71,8 +71,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Password</label>
-                            <div class="col-8">
+                            <label for="password" class="col-2 col-form-label">Password</label>
+                            <div class="col-10">
                                 <input id="password" name="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror"
                                     aria-describedby="passwordHelpBlock" value="{{ old('password') }}">
@@ -82,8 +82,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Manager</label>
-                            <div class="col-8">
+                            <label for="password" class="col-2 col-form-label">Manager</label>
+                            <div class="col-10">
                                 <select id="manager" class="form-control @error('manager') is-invalid @enderror"
                                     name="manager" aria-describedby="managerHelpBlock">
                                     <option value="">Select Manager</option>
@@ -99,19 +99,22 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="offset-4 col-8">
-                                <a href="{{ route('admin.drivers.index') }}" class="btn btn-danger btn-sm">Cancelar</a>
-                                <button name="submit" type="submit" class="btn btn-success btn-sm">Save</button>
+                            <div class="offset-2 col-5">
+                                <a href="{{ route('admin.drivers.index') }}"
+                                    class="btn btn-danger btn-block">Cancelar</a>
+                            </div>
+                            <div class="col-5">
+                                <button name="submit" type="submit" class="btn btn-success btn-block">Save</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Define Location Map
-                        Driver</strong>
+                        Driver (Drag the marker to choose coordinates)</strong>
                 </div>
                 <div id="map" class="card-body">
 

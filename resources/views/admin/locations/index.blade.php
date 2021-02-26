@@ -24,7 +24,6 @@
                                     <th class="text-center">Latitude</th>
                                     <th class="text-center">Created At</th>
                                     <th class="text-center">From</th>
-                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,14 +43,6 @@
                                                 Car
                                             </td>
                                         @endif
-                                        <td class="justify-content-center d-flex">
-                                            <form method="POST"
-                                                action="{{ route('admin.locations.destroy', ['location' => $item->id]) }}">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete -</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

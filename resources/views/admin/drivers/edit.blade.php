@@ -32,8 +32,8 @@
                         @method('PUT')
 
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">Name</label>
-                            <div class="col-8">
+                            <label for="name" class="col-2 col-form-label">Name</label>
+                            <div class="col-10">
                                 <input id="name" name="name" placeholder="Insert the name of driver" type="text"
                                     class="form-control @error('name') is-invalid @enderror"
                                     aria-describedby="nameHelpBlock" value="{{ $driver->name }}">
@@ -43,8 +43,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-4 col-form-label">Email</label>
-                            <div class="col-8">
+                            <label for="email" class="col-2 col-form-label">Email</label>
+                            <div class="col-10">
                                 <input id="email" name="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" value="{{ $driver->email }}"
                                     placeholder="Insert the email of driver">
@@ -55,8 +55,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Home Location</label>
-                            <div class="col-4">
+                            <label for="password" class="col-2 col-form-label">Home</label>
+                            <div class="col-5">
                                 <input id="latitude" name="latitude" type="text" placeholder="Latitude"
                                     class="form-control @error('latitude') is-invalid @enderror"
                                     value="{{ $driver->location->latitude }}">
@@ -64,7 +64,7 @@
                                     <span class="form-text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-5">
                                 <input id="longitude" name="longitude" type="text" placeholder="Longitude"
                                     class="form-control @error('longitude') is-invalid @enderror"
                                     value="{{ $driver->location->longitude }}">
@@ -74,8 +74,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Password</label>
-                            <div class="col-8">
+                            <label for="password" class="col-2 col-form-label">Password</label>
+                            <div class="col-10">
                                 <input id="password" name="password" type="password" class="form-control"
                                     aria-describedby="passwordHelpBlock">
                                 <span id="passwordHelpBlock" class="form-text text-muted">Insert the password or left black
@@ -83,8 +83,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-4 col-form-label">Manager</label>
-                            <div class="col-8">
+                            <label for="password" class="col-2 col-form-label">Manager</label>
+                            <div class="col-10">
                                 <select id="manager" class="form-control" name="manager"
                                     aria-describedby="managerHelpBlock">
                                     @foreach ($managers as $manager)
@@ -92,21 +92,19 @@
                                             <option value="{{ $manager->id }}" selected>{{ $manager->name }}
                                             </option>
                                         @else
-                                            <option value="{{ $manager->id }}" selected>{{ $manager->name }}
+                                            <option value="{{ $manager->id }}">{{ $manager->name }}
                                             </option>
                                         @endif
                                     @endforeach
-
                                 </select>
-                                <span id="managerHelpBlock" class="form-text text-muted">Choose the manager</span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="offset-4 col-4">
+                            <div class="offset-2 col-5">
                                 <a href="{{ route('admin.drivers.index') }}"
                                     class="btn btn-danger btn-block">Cancelar</a>
                             </div>
-                            <div class="col-4">
+                            <div class="col-5">
                                 <button name="submit" type="submit" class="btn btn-success btn-block">Save</button>
                             </div>
                         </div>
@@ -118,7 +116,7 @@
         <div class="col-6">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Define Location Map
-                        Driver</strong>
+                        Driver (Drag the marker to choose coordinates)</strong>
                 </div>
                 <div id="map" class="card-body">
 
@@ -139,7 +137,6 @@
                                     <th class="text-center">Band</th>
                                     <th class="text-center">Model</th>
                                     <th class="text-center">Actual Location</th>
-                                    <th class="text-center">Driver</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -151,7 +148,8 @@
                                         <td class="text-center">{{ $car->location->latitude }} |
                                             {{ $car->location->latitude }}</td>
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-sm" href="{{ route('admin.cars.index') }}">Show
+                                            <a class="btn btn-success"
+                                                href="{{ route('admin.cars.edit', ['car' => $car->id]) }}">Edit
                                                 +</a>
                                         </td>
                                     </tr>

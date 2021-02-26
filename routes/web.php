@@ -12,7 +12,6 @@ use Admin\AdminManagerController;
 use Admin\AdminLocationController;
 use Admin\AdminDriverController;
 use Admin\AdminCarController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +48,10 @@ Route::prefix('admin')->group(function () {
         'as' => 'admin'
     ]);
     Route::resource('/cars', AdminCarController::class, [
+        'as' => 'admin'
+    ]);
+
+    Route::resource('/users', AdminUserController::class, [
         'as' => 'admin'
     ]);
 });

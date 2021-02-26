@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-6">
             <div class="card mb-4">
-                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Edit Account Manager</strong>
+                <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Create Account Manager</strong>
                 </div>
                 <div class="card-body">
 
@@ -16,7 +16,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-2 col-form-label">Name</label>
+                            <label for="name" class="col-3 col-form-label">Name</label>
                             <div class="col-8">
                                 <input id="name" name="name" placeholder="Insert the name of manage" type="text"
                                     class="form-control @error('name') is-invalid @enderror"
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-2 col-form-label">Email</label>
+                            <label for="email" class="col-3 col-form-label">Email</label>
                             <div class="col-8">
                                 <input id="email" name="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
@@ -39,24 +39,24 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-2 col-form-label">Password</label>
+                            <label for="password" class="col-3 col-form-label">Password</label>
                             <div class="col-8">
                                 <input id="password" name="password" type="password" class="form-control"
                                     aria-describedby="passwordHelpBlock">
-                                <small id="passwordHelpBlock" class="form-text text-muted">Insert the password or left black
-                                    for no re-definition</small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="offset-2 col-8">
-                                <a href="{{ route('admin.managers.index') }}" class="btn btn-danger btn-sm">Cancelar</a>
-                                <button name="submit" type="submit" class="btn btn-success btn-sm">Submit</button>
+                            <div class="offset-3 col-4">
+                                <a href="{{ route('admin.managers.index') }}"
+                                    class="btn btn-danger btn-block">Cancelar</a>
+                            </div>
+                            <div class="col-4">
+                                <button name="submit" type="submit" class="btn btn-success btn-block">Submit</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

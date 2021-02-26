@@ -11,7 +11,7 @@
     </ol>
 
     <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-11">
             <div class="card mb-4">
                 <div class="card-header"><i class="far fa-arrow-alt-circle-up"></i> <strong>Cars</strong>
                     <a href="{{ route('admin.cars.create') }}" class="btn btn-success float-right">Create Car +</a>
@@ -43,10 +43,12 @@
                                         <td class="text-center">{{ $item->created_at->diffForHumans() }}
                                         </td>
                                         <td class="justify-content-center d-flex">
+                                            <a href="{{ route('admin.cars.edit', ['car' => $item->id]) }}"
+                                                class="btn btn-secondary mr-2">Edit +</a>
                                             <form method="POST" action="{{ route('admin.cars.destroy', [$item->id]) }}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete -</button>
+                                                <button type="submit" class="btn btn-danger">Delete -</button>
                                             </form>
                                         </td>
                                     </tr>
