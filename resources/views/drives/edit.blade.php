@@ -1,5 +1,4 @@
-@extends('layouts.drivers')
-
+@include('layouts.drivers')
 @section('content')
     <h1 class="mt-4">Home</h1>
     <hr>

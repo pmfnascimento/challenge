@@ -20,5 +20,26 @@ class ManagerSeeder extends Seeder
             'password' => Hash::make('password'),
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
+
+        DB::table('managers')->insert([
+            'name' => 'Steven Smith',
+            'email' => 'steven@challenge.com',
+            'password' => Hash::make('password'),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('managers')->insert([
+            'name' => 'Dasy Also',
+            'email' => 'dasy@challenge.com',
+            'password' => Hash::make('password'),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('managers')->insert([
+            'name' => 'Robison Sell',
+            'email' => 'robison@challenge.com',
+            'password' => Hash::make('password'),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
     }
 }

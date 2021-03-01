@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\DriverLoginController;
+use App\Http\Controllers\Api\DriversController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/drivers/logout',[DriverLoginController::class,'logout']);
+Route::post('/drivers/login',[DriverLoginController::class,'login']);
+Route::get('/drivers/getCars/{id}',[DriversController::class,'getCars']);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -61,10 +62,6 @@
                         <a class="nav-link collapsed" href="{{ route('admin.cars.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
                             Cars
-                        </a>
-                        <a class="nav-link collapsed" href="{{ route('admin.users.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>
-                            Admin Users
                         </a>
                     </div>
                 </div>

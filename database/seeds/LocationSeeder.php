@@ -16,8 +16,44 @@ class LocationSeeder extends Seeder
     public function run(Faker $faker)
     {
         DB::table('locations')->insert([
-            'longitude' => $faker->latitude($min = -90, $max = 90),
-            'latitude' => $faker->longitude($min = -180, $max = 180),
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('locations')->insert([
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('locations')->insert([
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('locations')->insert([
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('locations')->insert([
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('locations')->insert([
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+
+        DB::table('locations')->insert([
+            'longitude' => $faker->latitude($min = -8.7, $max = -8.5),
+            'latitude' => $faker->longitude($min = 41, $max = 42),
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
     }

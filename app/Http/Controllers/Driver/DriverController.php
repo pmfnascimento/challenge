@@ -24,7 +24,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-        return view('driver.home');
+        return view('drives.home');
     }
 
     public function logout()

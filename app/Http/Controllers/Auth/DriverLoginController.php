@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -52,16 +53,22 @@ class DriverLoginController extends Controller
      */
     public function login(Request $request)
     {
-        $this->validator($request);
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
 
-        if ($this->guard()->attempt($request->only('email', 'password'), $request->filled('remember'))) {
+        if (Auth::guard('driver')->attempt($request->only('email', 'password'))) {
             //Authentication passed...
             return redirect()
                 ->intended(route('drivers.home'));
         }
+        
+        throw ValidationException::withMessages([
+            'email' =>['The provided credentials are incorect.']
+        ]);
 
-        //Authentication failed...
-        return $this->loginFailed();
+     
     }
 
     /**
@@ -69,10 +76,13 @@ class DriverLoginController extends Controller
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout()
+    public function logout(Request $request)
     {
         //logout the admin...
-        $this->guard()->logout();
+        $request->session()->regenerate(true);
+        Session::flush();
+        Auth::guard('driver')->logout();
+       
         return redirect()->route('drivers.login');
     }
 
@@ -86,7 +96,7 @@ class DriverLoginController extends Controller
     {
 
         $rules = [
-            'email'    => 'required|email|exists:admins|min:5|max:191',
+            'email'    => 'required|email|exists:drivers|min:5|max:191',
             'password' => 'required|string|min:4|max:255',
         ];
 

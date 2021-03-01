@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 
-use Illuminate\Support\Facades\Session;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -54,7 +54,7 @@ class AdminLoginController extends Controller
     {
         $this->validator($request);
 
-        if ($this->guard()->attempt($request->only('email', 'password'), $request->filled('remember'))) {
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
             //Authentication passed...
             return redirect()
                 ->intended(route('admin.home'));
