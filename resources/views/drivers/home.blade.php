@@ -1,4 +1,5 @@
-@include('layouts.drivers')
+@extends('layouts.drivers',['managers' => $managers])
+
 @section('content')
     <h1 class="mt-4">Home</h1>
     <hr>

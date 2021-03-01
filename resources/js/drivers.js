@@ -32,8 +32,11 @@ $(function () {
 });
 
 window.Vue = require('vue');
+import "leaflet/dist/leaflet.css";
 Vue.component('navbar-drivers-component', require('./components/drivers/Navbar.vue').default);
 Vue.component('list-cars', require('./components/drivers/ListCars.vue').default);
+Vue.component('edit-cars', require('./components/drivers/EditCars.vue').default);
+Vue.component('create-cars', require('./components/drivers/CreateCars.vue').default);
 const app = new Vue({
     el: '#app',
 });

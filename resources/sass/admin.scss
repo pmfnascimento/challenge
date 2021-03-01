@@ -10,3 +10,11 @@
 .sb-sidenav{
     box-shadow: 0.25rem -0 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
+.leaflet-default-icon-path {
+    background-image: url('~leaflet/dist/images/marker-icon.png');
+}
+
+.leaflet-shadow-pane {
+    z-index: 500;
+    display: none;
+}

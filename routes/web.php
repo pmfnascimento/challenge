@@ -69,5 +69,7 @@ Route::prefix('drivers')->group(function () {
     Route::get('/login', [DriverLoginController::class, 'showLoginForm'])->name('drivers.login');
     Route::post('/login', [DriverLoginController::class, 'login'])->name('drivers.login.submit');
     Route::get('/home', [DriverController::class, 'index'])->name('drivers.home');
+    Route::get('/cars/{id}/edit', [DriverController::class, 'editCar'])->name('drivers.edit');
+    Route::get('/cars/create', [DriverController::class, 'create'])->name('drivers.create');
     Route::post('/logout', [DriverLoginController::class, 'logout'])->name('drivers.logout');
 });

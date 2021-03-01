@@ -5,6 +5,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="far fa-arrow-alt-circle-up"></i> <strong>Cars</strong>
+                    <a href="/drivers/cars/create" class="btn btn-success btn-sm float-right">Add New Car+</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -24,7 +25,7 @@
                                  <td class="text-center">{{ car.latitude + ' | ' + car.longitude }}</td> 
                                 <td class="text-center">
                                     <a :href="`/drivers/cars/${car.car_id}/edit/`" class="btn btn-secondary btn-sm">Edit+ </a>
-                                   <button class="btn btn-danger btn-sm">Delete +</button>
+                                   <button class="btn btn-danger btn-sm" @click.prevent="removeCar(car.car_id)">Delete +</button>
                                 </td>
                               </tr>
                             </tbody>
@@ -38,23 +39,34 @@
 <script>
 export default {
       props : ['user'],
-    data(){
-        return{
-            cars: []
-        }
-    },
-
-       
+            data(){
+                return{
+                    cars: []
+                }
+            },
         mounted(){
             
                axios.get('/api/drivers/getCars/'+ this.user)
                .then((response) => {
                   this.cars = response.data;
-                  console.log(this.cars);
+      
                 }).catch(error => {
 
               });
             },
+            methods:{
+               
+                removeCar(id){
+                axios.post('/api/drivers/destroy/'+ id)
+                   .then((response) => {
+                        location.reload();
+                      console.log(this.cars);
+                    }).catch(error => {
+
+                  });
+                }
+                
+            }
      
     }
 </script>

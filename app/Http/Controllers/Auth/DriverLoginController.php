@@ -76,13 +76,10 @@ class DriverLoginController extends Controller
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout(Request $request)
+    public function logout()
     {
         //logout the admin...
-        $request->session()->regenerate(true);
-        Session::flush();
-        Auth::guard('driver')->logout();
-       
+        $this->guard()->logout();
         return redirect()->route('drivers.login');
     }
 

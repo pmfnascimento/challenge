@@ -12,3 +12,11 @@
 .bg-indigo{
     background-color: $indigo;
 }
+.leaflet-default-icon-path {
+    background-image: url('~leaflet/dist/images/marker-icon.png');
+}
+
+.leaflet-shadow-pane {
+    z-index: 500;
+    display: none;
+}

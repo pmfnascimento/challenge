@@ -129,10 +129,10 @@ class AdminCarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //
-        $car = new Car();
+        $car = Car::find($id);
         $location = new Location();
 
         $request->validate([
@@ -146,7 +146,7 @@ class AdminCarController extends Controller
             'longitude' => 'required'
         ]);
 
-        $location = $car->locations()->create([
+        $location = $car->locations()->update([
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);

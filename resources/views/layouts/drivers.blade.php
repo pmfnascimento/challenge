@@ -31,11 +31,11 @@
                         aria-haspopup="true" aria-expanded="false">
                         {{ Auth::guard('driver')->user()->name }}</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('drivers.logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('drivers.logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </div>
@@ -50,7 +50,21 @@
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link collapsed" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
-                                Managers
+                                Cars
+                            </a>
+
+                            @foreach ($managers as $manager)
+                                <a class="nav-link collapsed" href="">
+                                    <div class="sb-nav-link-icon"></div>
+                                    ID MANAGER: <br />{{ $manager->manager->id }}
+                                </a>
+                                <a class="nav-link collapsed" href="">
+                                    <div class="sb-nav-link-icon"></div>
+                                    NAME MANAGER: <br /> {{ $manager->manager->name }}
+                                </a>
+
+                            @endforeach
+
                             </a>
 
                         </div>

@@ -24,3 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/drivers/logout',[DriverLoginController::class,'logout']);
 Route::post('/drivers/login',[DriverLoginController::class,'login']);
 Route::get('/drivers/getCars/{id}',[DriversController::class,'getCars']);
+Route::get('/drivers/getCar/{id}',[DriversController::class,'getCar']);
+Route::post('/drivers/setCar/{id}',[DriversController::class,'setCar']);
+Route::post('/drivers/destroy/{id}',[DriversController::class,'destroy']);
+Route::post('/drivers/createCar',[DriversController::class,'store']);

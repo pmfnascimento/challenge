@@ -10948,3 +10948,12 @@ a.text-dark:focus {
   background-color: #6574cd;
 }
 
+.leaflet-default-icon-path {
+  background-image: url(/images/vendor/leaflet/dist/marker-icon.png?2273e3d8ad9264b7daa5bdbf8e6b47f8);
+}
+
+.leaflet-shadow-pane {
+  z-index: 500;
+  display: none;
+}
+
