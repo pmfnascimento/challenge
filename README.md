@@ -19,3 +19,4 @@ composer install <br>
 npm install<br>
 Migrate Database<br>
 Seed Database<br>
+php artisan:key generate<br/>
