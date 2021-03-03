@@ -12,6 +12,7 @@ class Location extends Model
     use Geographical;
     
     protected static $kilometers = true;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -19,11 +20,19 @@ class Location extends Model
      */
     protected $fillable = ['latitude', 'longitude'];
 
+    /**
+     * Relationship between Location and Drivers
+     *
+     */
     public function driver()
     {
         return $this->hasMany(Driver::class);
     }
 
+    /**
+     * Relationship between Location and Cars
+     *
+     */
     public function car()
     {
         return $this->hasMany(Car::class);

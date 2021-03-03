@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
-use Illuminate\Support\Facades\Auth;
 use App\Models\Manager;
 use App\Models\Driver;
 use App\Models\Car;
@@ -45,16 +43,5 @@ class AdminController extends Controller
             'lastCars' => $lastCars,
             'cars' => $cars
         ]);
-    }
-
-    /**
-     * Logout from admin area 
-     *
-     * @return  void 
-     */
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
     }
 }

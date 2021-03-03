@@ -29,7 +29,6 @@ class AdminCarController extends Controller
      */
     public function index()
     {
-        //
         $cars = Car::all();
 
         return view('admin.cars.index', ['cars' => $cars]);
@@ -55,7 +54,6 @@ class AdminCarController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $car = new Car();
         $location = new Location();
 
@@ -72,7 +70,6 @@ class AdminCarController extends Controller
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
-
 
         $car->brand = $request->brand;
         $car->model = $request->model;
@@ -93,8 +90,8 @@ class AdminCarController extends Controller
      */
     public function show($id)
     {
-        $projectExists = Car::where('id', $id)->exists();
-        if (!$projectExists) {
+        $Exists = Car::where('id', $id)->exists();
+        if (!$Exists) {
             abort(404);
         }
     }
@@ -119,7 +116,6 @@ class AdminCarController extends Controller
             'driversAll' => $driversAll
         ]);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -149,7 +145,6 @@ class AdminCarController extends Controller
             'longitude' => $request->longitude
         ]);
 
-
         $car->brand = $request->brand;
         $car->model = $request->model;
         $car->plate_number = $request->plate_number;
@@ -169,7 +164,6 @@ class AdminCarController extends Controller
      */
     public function destroy($id)
     {
-        //
         $car = Car::findOrFail($id);
         $car->delete();
         return redirect()->route('admin.cars.index');

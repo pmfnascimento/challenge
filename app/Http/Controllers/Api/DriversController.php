@@ -11,14 +11,10 @@ use App\Http\Controllers\Controller;
 
 class DriversController extends Controller
 {
-  /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-  
     /**
-     * Show the application dashboard.
+     * Get Cars by Driver id
+     * 
+     * @param int $id Fom Driver
      *
      * @return \Illuminate\Http\Response
      */
@@ -32,13 +28,27 @@ class DriversController extends Controller
         ->get();
         return response()->json($cars, 200);
     }
-
+    /**
+     * Get information by id from a car, with location associated
+     *
+     * @param int $id From car
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getCar($id)
     {
         $car = Car::find($id)->with('location')->get();
         return response()->json($car, 200);
     }
-
+    
+    /**
+     * Create Car in Databse
+     *
+     * @param Request $request
+     * @param int $id From car
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function setCar(Request $request,$id)
     {
         $car = Car::find($id);
@@ -55,9 +65,8 @@ class DriversController extends Controller
         return redirect()->route('drivers.home');
     }
 
-    
     /**
-     * Remove the specified resource from storage.
+     * Remove Car from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -71,7 +80,7 @@ class DriversController extends Controller
     }
 
       /**
-     * Store a newly created resource in storage.
+     * Store Car in database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

@@ -1988,25 +1988,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // Build icon assets.
 
 
@@ -2066,28 +2047,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6771,7 +6730,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#map {\n    height: 400px;\n    width: 100%;\n    z-index: 1001;\n}\n", ""]);
+exports.push([module.i, "\n#map {\r\n    height: 400px;\r\n    width: 100%;\r\n    z-index: 1001;\n}\r\n", ""]);
 
 // exports
 
@@ -6790,7 +6749,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#map {\n    height: 400px;\n    width: 100%;\n    z-index: 1001;\n}\n", ""]);
+exports.push([module.i, "\n#map {\r\n    height: 400px;\r\n    width: 100%;\r\n    z-index: 1001;\n}\r\n", ""]);
 
 // exports
 
@@ -52907,9 +52866,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "far fa-arrow-alt-circle-up" }),
       _vm._v(" "),
-      _c("strong", [
-        _vm._v("Define Actual Location Map\n                    of Car")
-      ])
+      _c("strong", [_vm._v("Define Actual Location Map of Car")])
     ])
   }
 ]
@@ -52940,293 +52897,270 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _c(
-            "form",
-            {
-              staticClass: "form-horizontal",
-              attrs: { action: "#", method: "post" }
-            },
-            [
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              { staticClass: "col-3 col-form-label", attrs: { for: "brand" } },
+              [_vm._v("Brand")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-8" }, [
+              _c("input", {
+                directives: [
                   {
-                    staticClass: "col-3 col-form-label",
-                    attrs: { for: "brand" }
-                  },
-                  [_vm._v("Brand")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-8" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.brand,
-                        expression: "form.brand"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "brand",
-                      name: "brand",
-                      placeholder: "Insert the brand of car",
-                      type: "text"
-                    },
-                    domProps: { value: _vm.form.brand },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "brand", $event.target.value)
-                      }
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.brand,
+                    expression: "form.brand"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "brand",
+                  name: "brand",
+                  placeholder: "Insert the brand of car",
+                  type: "text"
+                },
+                domProps: { value: _vm.form.brand },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
                     }
-                  }),
-                  _vm._v(" "),
-                  this.errors.brand
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "invalid-feedback d-inline",
-                          attrs: { role: "alert" }
-                        },
-                        [_c("strong", [_vm._v(_vm._s(this.errors.brand[0]))])]
-                      )
-                    : _vm._e()
-                ])
-              ]),
+                    _vm.$set(_vm.form, "brand", $event.target.value)
+                  }
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-3 col-form-label",
-                    attrs: { for: "model" }
-                  },
-                  [_vm._v("Model")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-8" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.model,
-                        expression: "form.model"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "model",
-                      name: "model",
-                      type: "text",
-                      placeholder: "Insert the model of car"
-                    },
-                    domProps: { value: _vm.form.model },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "model", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  this.errors.model
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "invalid-feedback d-inline",
-                          attrs: { role: "alert" }
-                        },
-                        [_c("strong", [_vm._v(_vm._s(this.errors.model[0]))])]
-                      )
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-3 col-form-label",
-                    attrs: { for: "plate_number" }
-                  },
-                  [_vm._v("Plate Number")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-8" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.plate_number,
-                        expression: "form.plate_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "plate_number",
-                      name: "plate_number",
-                      type: "text",
-                      placeholder: "Insert the plate number of car"
-                    },
-                    domProps: { value: _vm.form.plate_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "plate_number", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  this.errors.plate_number
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "invalid-feedback d-inline",
-                          attrs: { role: "alert" }
-                        },
-                        [
-                          _c("strong", [
-                            _vm._v(_vm._s(this.errors.plate_number[0]))
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-3 col-form-label",
-                    attrs: { for: "password" }
-                  },
-                  [_vm._v("Actual Location")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-4" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.latitude,
-                        expression: "form.latitude"
-                      }
-                    ],
-                    ref: "latitude",
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "latitude",
-                      name: "latitude",
-                      type: "text",
-                      placeholder: "Latitude"
-                    },
-                    domProps: { value: _vm.form.latitude },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "latitude", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  this.errors.latitude
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "invalid-feedback d-inline",
-                          attrs: { role: "alert" }
-                        },
-                        [
-                          _c("strong", [
-                            _vm._v(_vm._s(this.errors.latitude[0]))
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-4" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.longitude,
-                        expression: "form.longitude"
-                      }
-                    ],
-                    ref: "longitude",
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "longitude",
-                      name: "longitude",
-                      type: "text",
-                      placeholder: "Longitude"
-                    },
-                    domProps: { value: _vm.form.longitude },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "longitude", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  this.errors.longitude
-                    ? _c(
-                        "span",
-                        {
-                          staticClass: "invalid-feedback d-inline",
-                          attrs: { role: "alert" }
-                        },
-                        [
-                          _c("strong", [
-                            _vm._v(_vm._s(this.errors.longitude[0]))
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-4" }, [
-                  _c(
-                    "button",
+              this.errors.brand
+                ? _c(
+                    "span",
                     {
-                      staticClass: "btn btn-success btn-block",
-                      attrs: { name: "submit", type: "submit" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.submitForm($event)
-                        }
-                      }
+                      staticClass: "invalid-feedback d-inline",
+                      attrs: { role: "alert" }
                     },
-                    [_vm._v("Submit")]
+                    [_c("strong", [_vm._v(_vm._s(this.errors.brand[0]))])]
                   )
-                ])
-              ])
-            ]
-          )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              { staticClass: "col-3 col-form-label", attrs: { for: "model" } },
+              [_vm._v("Model")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.model,
+                    expression: "form.model"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "model",
+                  name: "model",
+                  type: "text",
+                  placeholder: "Insert the model of car"
+                },
+                domProps: { value: _vm.form.model },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "model", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              this.errors.model
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback d-inline",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(this.errors.model[0]))])]
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-3 col-form-label",
+                attrs: { for: "plate_number" }
+              },
+              [_vm._v("Plate Number")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-8" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.plate_number,
+                    expression: "form.plate_number"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "plate_number",
+                  name: "plate_number",
+                  type: "text",
+                  placeholder: "Insert the plate number of car"
+                },
+                domProps: { value: _vm.form.plate_number },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "plate_number", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              this.errors.plate_number
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback d-inline",
+                      attrs: { role: "alert" }
+                    },
+                    [
+                      _c("strong", [
+                        _vm._v(_vm._s(this.errors.plate_number[0]))
+                      ])
+                    ]
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-3 col-form-label",
+                attrs: { for: "password" }
+              },
+              [_vm._v("Actual Location")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.latitude,
+                    expression: "form.latitude"
+                  }
+                ],
+                ref: "latitude",
+                staticClass: "form-control",
+                attrs: {
+                  id: "latitude",
+                  name: "latitude",
+                  type: "text",
+                  placeholder: "Latitude"
+                },
+                domProps: { value: _vm.form.latitude },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "latitude", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              this.errors.latitude
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback d-inline",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(this.errors.latitude[0]))])]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.longitude,
+                    expression: "form.longitude"
+                  }
+                ],
+                ref: "longitude",
+                staticClass: "form-control",
+                attrs: {
+                  id: "longitude",
+                  name: "longitude",
+                  type: "text",
+                  placeholder: "Longitude"
+                },
+                domProps: { value: _vm.form.longitude },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "longitude", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              this.errors.longitude
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback d-inline",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(this.errors.longitude[0]))])]
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success btn-block",
+                  attrs: { name: "submit", type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.submitForm($event)
+                    }
+                  }
+                },
+                [_vm._v("Submit")]
+              )
+            ])
+          ])
         ])
       ])
     ]),
@@ -53292,9 +53226,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "far fa-arrow-alt-circle-up" }),
       _vm._v(" "),
-      _c("strong", [
-        _vm._v("Define Actual Location Map\n                    of Car")
-      ])
+      _c("strong", [_vm._v("Define Actual Location Map of Car")])
     ])
   }
 ]

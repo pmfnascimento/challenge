@@ -46,7 +46,7 @@ class DriverLoginController extends Controller
     }
 
     /**
-     * Login the admin.
+     * Login the driver.
      * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -63,22 +63,20 @@ class DriverLoginController extends Controller
             return redirect()
                 ->intended(route('drivers.home'));
         }
-        
-        throw ValidationException::withMessages([
-            'email' =>['The provided credentials are incorect.']
-        ]);
 
-     
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorect.']
+        ]);
     }
 
     /**
-     * Logout the admin.
+     * Logout the driver.
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout()
     {
-        //logout the admin...
+        //logout the driver...
         $this->guard()->logout();
         return redirect()->route('drivers.login');
     }

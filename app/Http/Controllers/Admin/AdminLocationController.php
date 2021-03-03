@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-
 use App\Models\Location;
 use App\Http\Controllers\Controller;
 
@@ -44,36 +42,11 @@ class AdminLocationController extends Controller
      */
     public function show($id)
     {
-        $projectExists = Location::where('id', $id)->exists();
-        if (!$projectExists) {
+        $Exists = Location::where('id', $id)->exists();
+        if (!$Exists) {
             abort(404);
         }
     }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-
-    }
-
 
     /**
      * Remove the specified resource from storage.
@@ -83,7 +56,6 @@ class AdminLocationController extends Controller
      */
     public function destroy($id)
     {
-        //
         $location = Location::findOrFail($id);
         $location->delete();
         return redirect()->route('admin.locations.index');

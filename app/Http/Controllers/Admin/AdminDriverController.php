@@ -44,7 +44,6 @@ class AdminDriverController extends Controller
      */
     public function create()
     {
-        //´
         $managers = Manager::all();
         return view('admin.drivers.create', ['managers' => $managers]);
     }
@@ -111,9 +110,8 @@ class AdminDriverController extends Controller
      */
     public function edit($id)
     {
-        //
-        $projectExists = Driver::where('id', $id)->exists();
-        if (!$projectExists) {
+        $Exists = Driver::where('id', $id)->exists();
+        if (!$Exists) {
             abort(404);
         }
 
@@ -134,9 +132,7 @@ class AdminDriverController extends Controller
     public function update(Request $request, $id)
     {
 
-        //
         $driver = Driver::findOrFail($id);
-        $location = new Location();
 
         $request->validate([
             'name' => 'required|max:255',
@@ -170,7 +166,6 @@ class AdminDriverController extends Controller
      */
     public function destroy($id)
     {
-        //
         $driver = Driver::findOrFail($id);
         $driver->delete();
         return redirect()->route('admin.drivers.index');

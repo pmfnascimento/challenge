@@ -1994,71 +1994,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // Build icon assets.
 
 
@@ -2117,14 +2052,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2301,7 +2228,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -6838,7 +6764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#map {\r\n  height: 400px;\r\n  width: 100%;\r\n  z-index: 1001;\n}\r\n", ""]);
+exports.push([module.i, "\n#map {\r\n    height: 400px;\r\n    width: 100%;\r\n    z-index: 1001;\n}\r\n", ""]);
 
 // exports
 
@@ -6857,7 +6783,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#map {\n    height: 400px;\n    width: 100%;\n    z-index: 1001;\n}\n", ""]);
+exports.push([module.i, "\n#map {\r\n    height: 400px;\r\n    width: 100%;\r\n    z-index: 1001;\n}\r\n", ""]);
 
 // exports
 
@@ -52900,7 +52826,11 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n              Save\n            ")]
+                [
+                  _vm._v(
+                    "\r\n                            Save\r\n                        "
+                  )
+                ]
               )
             ])
           ])
@@ -52968,7 +52898,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("strong", [
         _vm._v(
-          "Define Location Map Driver (Drag the marker to choose\n          coordinates)"
+          "Define Location Map Driver (Drag the marker to choose\r\n                    coordinates)"
         )
       ])
     ])
@@ -53235,7 +53165,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "Insert the password or left black\n                                for no re-definition"
+                    "Insert the password or left black\r\n                            for no re-definition"
                   )
                 ]
               )
@@ -53376,7 +53306,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("strong", [
         _vm._v(
-          "Define Location Map\n                    Driver (Drag the marker to choose coordinates)"
+          "Define Location Map\r\n                    Driver (Drag the marker to choose coordinates)"
         )
       ])
     ])
@@ -53522,7 +53452,7 @@ var staticRenderFns = [
           staticClass: "btn btn-success float-right",
           attrs: { href: "/managers/drivers/create" }
         },
-        [_vm._v("Create\n                    +")]
+        [_vm._v("Create +")]
       )
     ])
   },

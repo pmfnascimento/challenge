@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Yoeunes\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Models\Manager;
 use App\Models\Driver;
 use App\Http\Controllers\Controller;

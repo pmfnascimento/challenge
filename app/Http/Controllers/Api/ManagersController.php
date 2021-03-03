@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -14,32 +13,41 @@ use App\Http\Controllers\Controller;
 class ManagersController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Get Drivers By Manager Id
+     * 
+     * @param int $id Id From Manager
      *
      * @return \Illuminate\Http\Response
      */
     public function getDrivers($id)
     {
-    
         $id = Auth::guard('manager')->user()->id;
-        $managers = Driver::select('drivers.name', 'drivers.email', 'drivers.created_at','drivers.id as driver_id')->where('manager_id','=',$id)->withCount('car')->get();
+        $managers = Driver::select('drivers.name', 'drivers.email', 'drivers.created_at','drivers.id as driver_id')
+        ->where('manager_id','=',$id)->withCount('car')->get();
         return response()->json($managers, 200);
     }
 
+    /**
+     * Get Information from Driver associated by Location
+     *
+     * @param int $id Id from Driver
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getDriver($id){
-
         $driver = Driver::where('id',$id)->with('location')->get();
         return response()->json($driver, 200);
     }
 
     /**
-     * Show the application dashboard.
+     * Get Cars By Driver Id
+     * 
+     * @param int $id Id from Driver
      *
      * @return \Illuminate\Http\Response
      */
     public function getCars($id)
     {
-
         $cars  = DB::table('cars')->select('cars.brand', 'cars.model', 'cars.plate_number','locations.latitude', 'locations.longitude', 'cars.id as car_id')
         ->leftJoin('drivers as drivers', 'cars.driver_id', '=', 'drivers.id')
         ->leftJoin('locations as locations', 'cars.location_id', '=', 'locations.id')
@@ -48,10 +56,17 @@ class ManagersController extends Controller
         return response()->json($cars, 200);
     }
 
+    /**
+     * Update Information from Driver in Database
+     *
+     * @param Request $request
+     * @param int $id From Driver
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function setDriver(Request $request, $id)
     {
 
-        //
         $driver = Driver::findOrFail($id);
 
         $request->validate([
@@ -124,5 +139,4 @@ class ManagersController extends Controller
         $driver->delete();
         return redirect()->route('managers.home');
     }
-
 }

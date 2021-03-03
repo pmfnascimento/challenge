@@ -50,17 +50,12 @@ Route::prefix('admin')->group(function () {
     Route::resource('/cars', AdminCarController::class, [
         'as' => 'admin'
     ]);
-
-    Route::resource('/users', AdminUserController::class, [
-        'as' => 'admin'
-    ]);
 });
 
 
 
 Route::prefix('managers')->group(function () {
     Route::get('/login', [ManagerLoginController::class, 'showLoginForm'])->name('managers.login');
-    Route::post('/login', [ManagerLoginController::class, 'login'])->name('managers.login.submit');
     Route::get('/home', [ManagerController::class, 'index'])->name('managers.home');
     Route::post('/logout', [ManagerLoginController::class, 'logout'])->name('managers.logout');
     Route::get('/drivers/{id}/edit', [ManagerController::class, 'editDriver'])->name('managers.edit');
@@ -69,7 +64,6 @@ Route::prefix('managers')->group(function () {
 
 Route::prefix('drivers')->group(function () {
     Route::get('/login', [DriverLoginController::class, 'showLoginForm'])->name('drivers.login');
-    Route::post('/login', [DriverLoginController::class, 'login'])->name('drivers.login.submit');
     Route::get('/home', [DriverController::class, 'index'])->name('drivers.home');
     Route::get('/cars/{id}/edit', [DriverController::class, 'editCar'])->name('drivers.edit');
     Route::get('/cars/create', [DriverController::class, 'create'])->name('drivers.create');

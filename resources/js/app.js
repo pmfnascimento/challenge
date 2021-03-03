@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import "leaflet/dist/leaflet.css";
+ 'vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,11 +20,10 @@ import "leaflet/dist/leaflet.css";
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-
-
+Vue.component('login-drivers-component', require('./components/LoginDriverComponent.vue').default);
+Vue.component('login-managers-component', require('./components/LoginManagerComponent.vue').default);
 Vue.component('navbar-component', require('./components/NavbarComponent.vue').default);
 Vue.component('search-component', require('./components/SearchComponent.vue').default);
-Vue.component('login-drivers-component', require('./components/LoginDriverComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

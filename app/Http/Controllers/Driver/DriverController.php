@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Driver;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Models\Location;
 use App\Models\Driver;
 use App\Models\Car;
 use App\Http\Controllers\Controller;
@@ -21,7 +19,11 @@ class DriverController extends Controller
         $this->middleware(['auth:driver', 'preventBackHistory']);
     }
 
-    
+    /**
+     * Get Driver By Id
+     *
+     * @return Object
+     */
     public function getManagers()
     {
         $id = Auth::guard('driver')->user()->id;
@@ -29,26 +31,32 @@ class DriverController extends Controller
         return $managers;
     }
 
-    
     /**
-     * Show the application dashboard.
+     * Show the application Driver dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    
+    {
         $managers = $this->getManagers();
         return view('drivers.home', ['managers' => $managers]);
     }
 
+    /**
+     * Get information of Manager By id Driver
+     *
+     * @param int $id Id from Driver
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function editCar($id)
     {
         $managers = $this->getManagers();
-        return view('drivers.edit',['id' => $id, 'managers' => $managers]);
+        return view('drivers.edit', ['id' => $id, 'managers' => $managers]);
     }
 
     /**
-     * Show the application dashboard.
+     * Show the create Car page Driver.
      *
      * @return \Illuminate\Http\Response
      */
@@ -58,5 +66,4 @@ class DriverController extends Controller
         $managers = $this->getManagers();
         return view('drivers.create', ['id' => $id, 'managers' => $managers]);
     }
-
 }

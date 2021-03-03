@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class ManagerLoginController extends Controller
     }
 
     /**
-     * Login the admin.
+     * Login the manager.
      * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -60,18 +61,19 @@ class ManagerLoginController extends Controller
                 ->intended(route('managers.home'));
         }
 
-        //Authentication failed...
-        return $this->loginFailed();
+        throw ValidationException::withMessages([
+            'email' =>['The provided credentials are incorect.']
+        ]);
     }
 
     /**
-     * Logout the admin.
+     * Logout the manager.
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout()
     {
-        //logout the admin...
+        //logout the manager...
         $this->guard()->logout();
         return redirect()->route('managers.login');
     }

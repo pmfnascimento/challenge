@@ -35,23 +35,36 @@ class Driver extends Authenticatable
      *
      * @var array
      */
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
         'created_at'        => CreateAtCast::class,
     ];
 
     protected $dates = ['created_at', 'updated_at'];
-
+    
+    /**
+     * Relationship between Driver and Managers
+     *
+     */
     public function manager()
     {
         return $this->belongsTo(Manager::class);
     }
 
+    /**
+     * Relationship between Driver and Locations
+     *
+     */
     public function location()
     {
         return $this->belongsTo(Location::class);
     }
 
+    /**
+     * Relationship between Driver and Cars
+     *
+     */
     public function car()
     {
         return $this->hasMany(Car::class);
