@@ -1,7 +1,7 @@
 ## Challege Car Next to Me
 
 ### Project made with Laravel and vue
-<br>
+
 ##### Admin Area
 email: admin@challenge.com<br>
 password: password<br>
