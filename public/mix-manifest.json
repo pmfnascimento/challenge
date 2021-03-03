@@ -3,5 +3,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/admin.css": "/css/admin.css",
-    "/js/drivers.js": "/js/drivers.js"
+    "/js/drivers.js": "/js/drivers.js",
+    "/js/managers.js": "/js/managers.js"
 }

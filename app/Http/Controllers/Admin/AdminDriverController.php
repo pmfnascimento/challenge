@@ -68,8 +68,6 @@ class AdminDriverController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'manager' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
         ]);
 
         $location = $driver->location()->create([
@@ -145,8 +143,6 @@ class AdminDriverController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'manager' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
         ]);
 
         $driver->location()->update([

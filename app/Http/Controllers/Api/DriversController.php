@@ -25,7 +25,6 @@ class DriversController extends Controller
     public function getCars($id)
     {
 
-   
         $cars  = DB::table('cars')->select('cars.brand', 'cars.model', 'locations.latitude', 'locations.longitude', 'cars.id as car_id')
         ->leftJoin('drivers as drivers', 'cars.driver_id', '=', 'drivers.id')
         ->leftJoin('locations as locations', 'cars.location_id', '=', 'locations.id')

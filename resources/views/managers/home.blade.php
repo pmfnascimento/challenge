@@ -1,23 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.managers')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Managers Dashboard') }}</div>
+    <h1 class="mt-4">Home</h1>
+    <hr>
+    <ol class="breadcrumb mb-4 p-2">
+        <li class="breadcrumb-item active">Home/</li>
+    </ol>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <list-drivers :user="{{ Auth::guard('manager')->user()->id }}"></list-drivers>
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

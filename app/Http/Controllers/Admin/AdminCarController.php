@@ -66,8 +66,6 @@ class AdminCarController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'driver' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required'
         ]);
 
         $location = $car->locations()->create([

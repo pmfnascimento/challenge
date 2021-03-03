@@ -6,7 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Manager;
 use App\Models\Location;
-use App\Models\CarDriver;
+use App\Helpers\CreateAtCast;
+
+
 
 class Driver extends Authenticatable
 {
@@ -35,7 +37,10 @@ class Driver extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at'        => CreateAtCast::class,
     ];
+
+    protected $dates = ['created_at', 'updated_at'];
 
     public function manager()
     {
@@ -51,4 +56,5 @@ class Driver extends Authenticatable
     {
         return $this->hasMany(Car::class);
     }
+
 }

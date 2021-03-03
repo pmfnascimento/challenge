@@ -29,7 +29,7 @@ class CarSeeder extends Seeder
             'model' => $faker->userName,
             'plate_number' => $faker->postcode,
             'location_id' => 2,
-            'driver_id' => 1,
+            'driver_id' => 2,
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
 
@@ -59,7 +59,7 @@ class CarSeeder extends Seeder
             'model' => $faker->userName,
             'plate_number' => $faker->postcode,
             'location_id' => 5,
-            'driver_id' => 4,
+            'driver_id' => 5,
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
 
@@ -69,7 +69,7 @@ class CarSeeder extends Seeder
             'model' => $faker->userName,
             'plate_number' => $faker->postcode,
             'location_id' => 6,
-            'driver_id' => 3,
+            'driver_id' => 6,
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
 
@@ -79,7 +79,7 @@ class CarSeeder extends Seeder
             'model' => $faker->userName,
             'plate_number' => $faker->postcode,
             'location_id' => 7,
-            'driver_id' => 2,
+            'driver_id' => 7,
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
     }

@@ -63,6 +63,8 @@ Route::prefix('managers')->group(function () {
     Route::post('/login', [ManagerLoginController::class, 'login'])->name('managers.login.submit');
     Route::get('/home', [ManagerController::class, 'index'])->name('managers.home');
     Route::post('/logout', [ManagerLoginController::class, 'logout'])->name('managers.logout');
+    Route::get('/drivers/{id}/edit', [ManagerController::class, 'editDriver'])->name('managers.edit');
+    Route::get('/drivers/create', [ManagerController::class, 'create'])->name('managers.create');
 });
 
 Route::prefix('drivers')->group(function () {
