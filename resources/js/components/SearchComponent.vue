@@ -43,12 +43,14 @@
                 <div class="form-group col-md-3">
                     <button class="btn btn-primary btn-block" @click.prevent="submitForm">Search!</button>
                 </div>
+                <h4 class="text-center mt-2 mb-2">{{ coordinates }}</h4>
             </div>
         </form>
+            
     </div>
 
     <div>
-        <l-map id="map" class="mt-1" :zoom="zoom" :center="center" :markerZoomAnimation="true">
+        <l-map :id="isActive" class="mt-1" :zoom="zoom" :center="center" :markerZoomAnimation="true">
             <l-tile-layer :url="url"></l-tile-layer>
             <l-marker :lat-lng="locationLatLng"></l-marker>
             <l-circle :lat-lng="position.center" :radius="position.radius" :color="position.color" />
@@ -96,6 +98,8 @@ export default {
                 radius: 2500,
                 color: 'green'
             },
+            isActive: false,
+            coordinates: '',
             form: {
                 brand: '',
                 latitude: '',
@@ -146,6 +150,8 @@ export default {
                     this.circle.center = [response.data[0].latitude, response.data[0].longitude];
                     this.center = [response.data[0].latitude, response.data[0].longitude];
                     this.zoom = 13;
+                    this.isActive = 'map';
+                    this.coordinates = 'latitude: ' + response.data[0].latitude + '    longitude: ' + response.data[0].longitude + '   Distance: ' + parseFloat(response.data[0].distance).toFixed(2) + ' Klm';
 
                 })
                 .catch((error) => {
